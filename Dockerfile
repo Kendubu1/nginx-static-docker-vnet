@@ -1,4 +1,4 @@
-FROM nginx:1.13
+FROM nginx:1.17
 
 # Set Env Variables for the ports
 ENV PORT 80
@@ -21,6 +21,7 @@ RUN chmod -R +x /tmp/ssh_setup.sh \
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY sshd_config /etc/ssh/
 COPY init_container.sh /bin/
+RUN chmod +x /bin/init_container.sh
 COPY index.html /home/site/wwwroot/index.html
 COPY access.log /home/LogFiles/access.log
 COPY error.log /home/LogFiles/error.log
